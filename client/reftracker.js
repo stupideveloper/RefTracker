@@ -12,7 +12,6 @@ function sendRef(ref, queryString, urlParams) {
   .then(data => console.log('Data Pushed, DB Reference ID: ' + data.dbref));
   console.info('Sent Data')
   localStorage.setItem('lastRef', ref);
-
 }
 window.addEventListener('load', function () {
   console.info("RefTracker loading")
