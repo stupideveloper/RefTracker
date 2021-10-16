@@ -10,7 +10,7 @@ const faunaClient = new faunadb.Client({
   fetch: customFetch
 });
 
-const corsOriginDomain = "lachlankemp.com" // Set tracked page domain
+const corsOriginDomain = "https://lachlankemp.com" // Set tracked page domain
 const collectionName = 'LKRefs' // DB Collection Name
 const siteName = 'LK' // Arbitrary Site Name
 const refPath = '/lkref' // Path for incoming data
@@ -59,7 +59,7 @@ async function handleRequest(request) {
     return
   }
   if(url.pathname === '/') {
-    return Response.redirect('https://' + corsOriginDomain, 301)
+    return Response.redirect(corsOriginDomain, 301)
   }
   return new Response(JSON.stringify({
     error: '404 Not Found'
