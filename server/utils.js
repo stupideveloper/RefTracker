@@ -36,3 +36,16 @@ export function getFaunaError (error) {
 
   return {code, description, status};
 }
+export function MethodNotAllowed(request) {
+  return new Response(`Method ${request.method} not allowed.`, {
+    status: 405,
+    headers: {
+      'Allow': 'GET, POST'
+    }
+  })
+}
+export function NotFound(request) {
+  return new Response(`404 Not Found`, {
+    status: 404
+  })
+}

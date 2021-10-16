@@ -1,7 +1,7 @@
 
 
 import faunadb from 'faunadb';
-import {customFetch, getFaunaError} from './utils.js';
+import {customFetch, getFaunaError, NotFound, MethodNotAllowed} from './utils.js';
 
 const faunaClient = new faunadb.Client({
   secret: FAUNA_SECRET, // Defined as a cloudlfare secret
@@ -14,6 +14,7 @@ const corsOriginDomain = "https://lachlankemp.com" // Set tracked page domain
 const collectionName = 'LKRefs' // DB Collection Name
 const siteName = 'LK' // Arbitrary Site Name
 const refPath = '/lkref' // Path for incoming data
+const githubRefTrackerUrl = 'https://raw.githubusercontent.com/widelachie/RefTracker/main/client/reftracker.min.js'
 
 const {Create, Collection, Match, Index, Get, Ref, Paginate, Sum, Delete, Add, Select, Let, Var, Update} = faunadb.query;
 
@@ -21,7 +22,19 @@ const {Create, Collection, Match, Index, Get, Ref, Paginate, Sum, Delete, Add, S
 async function handleRequest(request) {
   const url = new URL(request.url)
 
-  if (url.pathname === refPath) {
+  // Disallow Other Methods
+  console.log(request.method)
+  if (request.method !== 'GET' && request.method !== 'POST') {
+    return MethodNotAllowed(request)
+  }
+
+  if (url.pathname === '/reftracker.min.js' && request.method === 'GET') {
+    return fetch(githubRefTrackerUrl)
+
+  }
+
+  // Data input path
+  if (url.pathname === refPath && request.method === 'POST') {
     const content = await request.json()
     const referrer = content.referrer;
 
@@ -56,7 +69,7 @@ async function handleRequest(request) {
       // Handle Errors
       const faunaError = getFaunaError(error);
       console.error(faunaError)
-      
+
       // Send Error to user
       return new Response(JSON.stringify(faunaError), { status: faunaError.status, headers: { 'Content-type': 'application/json', ...corsHeaders(allowedOrigin) } })
     }
@@ -66,12 +79,8 @@ async function handleRequest(request) {
     return Response.redirect(corsOriginDomain, 301)
   }
   // Return 404 if not found
-  return new Response(JSON.stringify({
-    error: '404 Not Found'
-  }), {
-    status: 404
-  }
-  )
+  return NotFound(request)
+
 }
 // CF Worker Event Listener
 addEventListener("fetch", event => {
