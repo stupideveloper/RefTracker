@@ -1,4 +1,4 @@
-const corsOriginDomain = "*"
+const corsOriginDomain = "lachlankemp.com"
 const collectionName = 'LKRefs'
 const siteName = 'LK'
 
