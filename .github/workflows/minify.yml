@@ -1,7 +1,7 @@
-name: GitHub Actions Demo
+name: Prepare Client JS
 on: [push]
 jobs:
-  Explore-GitHub-Actions:
+  Prepare-Client-JS:
     runs-on: ubuntu-latest
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so auto-minify job can access it
