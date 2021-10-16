@@ -1,10 +1,12 @@
-const url = 'https://reflog.lachlankemp.com/lkref'
+const v = '2.0.1'
+const scriptTag = document.querySelector("script[data-send-location]")
+const sendLocation =  scriptTag.getAttribute('data-send-location')
 function sendRef(ref, queryString, urlParams) {
   console.info('Sending: ' + ref)
   const body = {
     referrer: ref
   }
-  fetch(url, {
+  fetch(sendLocation, {
     method: 'POST',
     body: JSON.stringify(body)
   })
@@ -14,7 +16,7 @@ function sendRef(ref, queryString, urlParams) {
   localStorage.setItem('lastRef', ref);
 }
 window.addEventListener('load', function () {
-  console.info("RefTracker loading")
+  console.info("RefTracker loading v" + v)
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const ref = urlParams.get('ref')
