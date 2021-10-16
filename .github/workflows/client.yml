@@ -1,5 +1,8 @@
 name: Prepare Client JS
-on: [push]
+on: 
+  push:
+    paths:
+    - 'client/**'
 jobs:
   Minify:
     runs-on: ubuntu-latest
