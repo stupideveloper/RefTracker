@@ -2,6 +2,11 @@
   <b>RefTracker</b><br>
   🎃 Track Referrals Privately 🎃<br>
 </h1>
+<div align="center" style="border-bottom: none">
+  <img src="https://img.shields.io/badge/LICENSE-GPL--3.0-orange?style=for-the-badge&logo=none">
+  <img alt="CodeFactor Grade" src="https://img.shields.io/codefactor/grade/github/widelachie/RefTracker?style=for-the-badge">
+</div>
+
 <p align="center" style="border-bottom: none">
   Log site referrals efficiently without any large scale, privacy degrading trackers.<br><br>
   [✔] Serverless.  <br>
