@@ -1,7 +1,7 @@
 const v = '2.0.1'
 const scriptTag = document.querySelector("script[data-send-location]")
 const sendLocation =  scriptTag.getAttribute('data-send-location')
-function sendRef(ref, queryString, urlParams) {
+function sendRef(ref) {
   console.info('Sending: ' + ref)
   const body = {
     referrer: ref
@@ -29,6 +29,6 @@ window.addEventListener('load', function () {
     console.info('Duplicate referrer, not sending.')
     return
   }
-  sendRef(ref, queryString, urlParams)
+  sendRef(ref)
 
 })
