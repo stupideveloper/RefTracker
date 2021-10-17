@@ -89,7 +89,7 @@ Push your changes
 Create an HTML Document or use your production website.  
 To add tracking, put:
 ```
-<script defer data-send-location="https://[Your worker URL]/[refPath}"rc="http://[Your worker URL]/reftracker.min.js"></script>
+<script defer data-send-location="https://[Your worker URL]/[refPath]" src="http://[Your worker URL]/reftracker.min.js"></script>
 ```
 in the header, it should automatically start tracking requests.
 
