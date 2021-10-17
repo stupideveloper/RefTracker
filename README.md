@@ -3,7 +3,8 @@
   🎃 Track Referrals Privately 🎃<br>
 </h1>
 <div align="center" style="border-bottom: none">
-  <img src="https://img.shields.io/badge/LICENSE-GPL--3.0-orange?style=for-the-badge&logo=none">
+  <img src="https://img.shields.io/badge/LICENSE-GPL--3.0-brightgreen?style=for-the-badge&logo=none">
+  <img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/m/widelachie/RefTracker?color=https%3A%2F%2Fimg.shields.io%2Fgithub%2Fcommit-activity%2Fm%2Fwidelachie%2FRefTracker&style=for-the-badge">
   <img alt="CodeFactor Grade" src="https://img.shields.io/codefactor/grade/github/widelachie/RefTracker?style=for-the-badge">
   <img alt="GitHub branch checks state" src="https://img.shields.io/github/checks-status/widelachie/RefTracker/main?style=for-the-badge">
   
