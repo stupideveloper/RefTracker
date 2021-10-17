@@ -16,7 +16,7 @@ function sendRef(ref, queryString, urlParams) {
   localStorage.setItem('lastRef', ref);
 }
 window.addEventListener('load', function () {
-  console.info("RefTracker loading v" + v)
+  console.info("RefTracker loading version: " + v)
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const ref = urlParams.get('ref')
