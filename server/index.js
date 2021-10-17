@@ -1,7 +1,7 @@
 
 
 import faunadb from 'faunadb';
-import {customFetch, getFaunaError, NotFound, MethodNotAllowed} from './utils.js';
+import {customFetch, getFaunaError, NotFound, MethodNotAllowed, gatherFileResponse} from './utils.js';
 
 const faunaClient = new faunadb.Client({
   secret: FAUNA_SECRET, // Defined as a cloudlfare secret
@@ -14,10 +14,24 @@ const corsOriginDomain = "https://lachlankemp.com" // Set tracked page domain
 const collectionName = 'LKRefs' // DB Collection Name
 const siteName = 'LK' // Arbitrary Site Name
 const refPath = '/lkref' // Path for incoming data
-const githubRefTrackerUrl = 'https://raw.githubusercontent.com/widelachie/RefTracker/main/client/reftracker.min.js'
+const githubRefTrackerUrl = 'https://raw.githubusercontent.com/widelachie/RefTracker/main/client/reftracker.min.js' // Client Code URL
 
 const {Create, Collection, Match, Index, Get, Ref, Paginate, Sum, Delete, Add, Select, Let, Var, Update} = faunadb.query;
 
+async function respondWithFile(request) {
+  const init = {
+    headers: {
+      "content-type": "text/javascript",
+    },
+  }
+  const dataResponse = await fetch(githubRefTrackerUrl, init)
+  const results = await gatherFileResponse(dataResponse)
+  const response = new Response(results, init)
+  // Set Cors Headers
+  response.headers.set("Access-Control-Allow-Origin", corsOriginDomain)
+  response.headers.set("Access-Control-Allow-Methods", 'POST,GET')
+  return response
+}
 
 async function handleRequest(request) {
   const url = new URL(request.url)
@@ -28,9 +42,9 @@ async function handleRequest(request) {
     return MethodNotAllowed(request)
   }
 
+  // Client JS Path
   if (url.pathname === '/reftracker.min.js' && request.method === 'GET') {
-    return fetch(githubRefTrackerUrl)
-
+    return respondWithFile(request)
   }
 
   // Data input path
