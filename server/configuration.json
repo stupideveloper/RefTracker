@@ -1,0 +1,8 @@
+{
+  "regionString": "db.eu.fauna.com",
+  "corsOriginDomain": "https://lachlankemp.com",
+  "collectionName": "LKRefs",
+  "siteName": "LK",
+  "refPath": "/lkref",
+  "githubRefTrackerUrl": "https://raw.githubusercontent.com/widelachie/RefTracker/main/client/reftracker.min.js"
+}

@@ -1,20 +1,14 @@
-
+import { regionString, corsOriginDomain, collectionName, siteName, refPath, githubRefTrackerUrl } from './configuration.json'
 
 import faunadb from 'faunadb';
 import {customFetch, getFaunaError, NotFound, MethodNotAllowed, gatherFileResponse} from './utils.js';
 
 const faunaClient = new faunadb.Client({
-  secret: FAUNA_SECRET, // Defined as a cloudlfare secret
-  domain: 'db.eu.fauna.com', // Change to your region
+  secret: FAUNA_SECRET, 
+  domain: regionString, 
   scheme: 'https',
   fetch: customFetch
 });
-
-const corsOriginDomain = "https://lachlankemp.com" // Set tracked page domain
-const collectionName = 'LKRefs' // DB Collection Name
-const siteName = 'LK' // Arbitrary Site Name
-const refPath = '/lkref' // Path for incoming data
-const githubRefTrackerUrl = 'https://raw.githubusercontent.com/widelachie/RefTracker/main/client/reftracker.min.js' // Client Code URL
 
 const {Create, Collection, Match, Index, Get, Ref, Paginate, Sum, Delete, Add, Select, Let, Var, Update} = faunadb.query;
 
