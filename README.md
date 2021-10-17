@@ -5,8 +5,10 @@
 <div align="center" style="border-bottom: none">
   <img src="https://img.shields.io/badge/LICENSE-GPL--3.0-orange?style=for-the-badge&logo=none">
   <img alt="CodeFactor Grade" src="https://img.shields.io/codefactor/grade/github/widelachie/RefTracker?style=for-the-badge">
+  <img alt="GitHub branch checks state" src="https://img.shields.io/github/checks-status/widelachie/RefTracker/main?style=for-the-badge">
+  
 </div>
-
+<br>
 <p align="center" style="border-bottom: none">
   Log site referrals efficiently without any large scale, privacy degrading trackers.<br><br>
   [✔] Serverless.  <br>
