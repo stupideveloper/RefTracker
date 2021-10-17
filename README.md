@@ -16,7 +16,7 @@
   [✔] Small client bundle.  <br>
   [✔] Served on Cloudflare.  <br>
   [✔] Privacy focused.  <br>
-  [✔] GNU GPL v3.0 Licence  <br>
+  [✔] GNU GPL v3.0 Licence.  <br>
   [❌] Readable internal code.  <br>
 </p>
 
