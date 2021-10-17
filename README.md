@@ -5,6 +5,7 @@
 2. A Fauna Account
 3. Cloudflare Wrangler Installed
 4. A Github Account
+5. A Basic Knowlage of Git / GitHub
 #### Setting Up Fauna
 Our first step will be configuring a database through Fauna's dashboard.  
 After you've logged into the dashboard, create a new database named RefTracker and choose a region closest to your users:  
@@ -41,13 +42,20 @@ Save the secret somewhere safe as Fauna will never show it again.
 Also, never commit this secret to your Git repository. The Server role is all-powerful. Anyone with this secret would have full access to the database. The initial configuration of Fauna is ready.  
 
 #### Github Configuration
-To create your own repository `clone` `widelachie/RefTracker`
+[Fork this on github](https://github.com/widelachie/RefTracker/fork)
+and pull it to your computer. (If your using this I would assume you would know what I'm talking about)
 
-... TO BE CONTINUED
+#### Wrangler Config
+Login to Cloudflare.
+```
+wrangler login
+```
 
+Run
+```
+wrangler secret put FAUNA_SECRET
+```
+then paste your Fauna Secret saved earlier.
 
-
-
-
-
-
+#### File Config
+Open `index.js` and modify `regionString`, `corsOriginDomain`, `collectionName`, `siteName`, `refPath`, `githubRefTrackerUrl` to the respective labeled values
