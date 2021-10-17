@@ -1,5 +1,19 @@
-# RefTracker | Track Referrals Privately
-### How to setup
+<h1 align="center" style="border-bottom: none">
+  <b>RefTracker</b><br>
+  🎃 Track Referrals Privately 🎃<br>
+</h1>
+<p align="center" style="border-bottom: none">
+  Log site referrals efficiently without any large scale, privacy degrading trackers.<br><br>
+  [✔] Serverless.  <br>
+  [✔] Small client bundle.  <br>
+  [✔] Served on Cloudflare.  <br>
+  [✔] Privacy focused.  <br>
+  [❌] Readable internal code.  <br>
+</p>
+
+ 
+ 
+## How to setup
 #### Prerequisites
 1. A Cloudflare account
 2. A Fauna Account
