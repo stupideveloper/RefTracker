@@ -45,6 +45,19 @@ Also, never commit this secret to your Git repository. The Server role is all-po
 [Fork this on github](https://github.com/widelachie/RefTracker/fork)
 and pull it to your computer. (If your using this I would assume you would know what I'm talking about)
 
+Go to <a href="https://dash.cloudflare.com">Cloudflare</a> and open account settings.  
+<img src="https://user-images.githubusercontent.com/44110596/137615562-a4bea0fe-42bb-4271-8103-669bce5030fa.png" alt="Cloudflare account" height="300"/> 
+
+Go to the API Tokens tab and generate a new token.  
+<img src="https://user-images.githubusercontent.com/44110596/137615644-8296681a-e2cc-4ef9-90f3-df12ae3f6c04.png" alt="Api Tokens Tab" height="300"/> 
+
+Select the `Edit Cloudflare Workers` template.  
+Set `Account Resources` to your email address and set `Zone Resources` to "All Zones from an account and your email address.  
+<img src="https://user-images.githubusercontent.com/44110596/137615751-fe994c7a-70db-4140-afbb-7851e1c13d59.png" alt="Api config" height="300"/>  
+Continue through and create the token. Copy the token and create a new Github secret in settings (Settings => Secrets => New Repository Secret) with the name `CF_API_TOKEN` and paste in the Cloudflare token. Save.
+
+
+
 #### Wrangler Config
 Login to Cloudflare.
 ```
@@ -58,4 +71,26 @@ wrangler secret put FAUNA_SECRET
 then paste your Fauna Secret saved earlier.
 
 #### File Config
-Open `index.js` and modify `regionString`, `corsOriginDomain`, `collectionName`, `siteName`, `refPath`, `githubRefTrackerUrl` to the respective labeled values
+Open `configuration.json` and modify `regionString`, `corsOriginDomain`, `collectionName`, `siteName`, `refPath`, `githubRefTrackerUrl` to the respective labeled values
+| Variable Name  | Intended Content |
+| ------------- | ------------- |
+| regionString  | Region string were your database is held. |
+| corsOriginDomain  | Page that will be tracked CORS domain. |
+| collectionName | The name of your database collection. |
+| siteName | Name for logs (Uninportant). |
+| refPath | Path of url to send logs to. |
+| githubRefTrackerUrl | The path to `reftracker.min.js` in your github repository (`/client/reftracker.min.js`). |
+
+
+#### Intergrating
+Push your changes
+
+#### Client Testing
+Create an HTML Document or use your production website.  
+To add tracking, put:
+```
+<script defer data-send-location="https://[Your worker URL]/[refPath}"rc="http://[Your worker URL]/reftracker.min.js"></script>
+```
+in the header, it should automatically start tracking requests.
+
+And thats it, just access your website with `?ref=example` as a paramater and check your database!
