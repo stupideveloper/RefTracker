@@ -1,6 +1,6 @@
 <h1 align="center" style="border-bottom: none">
   <b>RefTracker</b><br>
-  🎃 Track Referrals Privately 🎃<br>
+ 🎅 Track Referrals Privately 🎅<br>
 </h1>
 <div align="center" style="border-bottom: none">
   <img src="https://img.shields.io/badge/LICENSE-GPL--3.0-brightgreen?style=for-the-badge&logo=none">
